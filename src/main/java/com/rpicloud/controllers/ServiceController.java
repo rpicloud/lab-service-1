@@ -20,7 +20,6 @@ public class ServiceController extends BaseController {
     @RequestMapping("/test")
     public ResponseEntity<List<String>> tests() throws InterruptedException {
 
-        System.out.println("IN SERVICE CONTROLLER");
         List<String> list = new ArrayList<>();
         list.add("H");
         list.add("e");
@@ -39,4 +38,19 @@ public class ServiceController extends BaseController {
         state.setException(exception);
         return "I'm gonna throw a '" + state.getException() + "' next time you call me!";
     }
+
+    @RequestMapping("/timeout/{interval}")
+    public String timeout(@PathVariable int interval) {
+        state.setTimeout(interval);
+        return "I will sleep for " + state.getTimeout() + "seconds on all requests!";
+    }
+
+
+//    @RequestMapping("/result-set/{amount}")
+//    public String resultSet(@PathVariable int amount) {
+//        // Set LIMIT on database calls
+//        return "Not implemented yet!";
+//    }
+
+
 }
