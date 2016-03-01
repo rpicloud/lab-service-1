@@ -10,6 +10,9 @@ public class Resource1 {
         this.data = data;
     }
 
+    public Resource1() {
+    }
+
     public String getData() {
         return data;
     }
