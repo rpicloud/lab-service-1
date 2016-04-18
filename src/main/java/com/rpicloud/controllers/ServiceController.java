@@ -33,17 +33,17 @@ public class ServiceController extends BaseController {
 
 
     // TODO: Move to a ConfigurationController with a shared ServerState
-    @RequestMapping("/exceptions/{exception}")
-    public String crash(@PathVariable String exception) {
-        state.setException(exception);
-        return "I'm gonna throw a '" + state.getException() + "' next time you call me!";
-    }
-
-    @RequestMapping("/timeout/{interval}")
-    public String timeout(@PathVariable int interval) {
-        state.setTimeout(interval);
-        return "I will sleep for " + state.getTimeout() + "seconds on all requests!";
-    }
+//    @RequestMapping("/exceptions/{exception}")
+//    public String crash(@PathVariable String exception) {
+//        state.setException(exception);
+//        return "I'm gonna throw a '" + state.getException() + "' next time you call me!";
+//    }
+//
+//    @RequestMapping("/timeout/{interval}")
+//    public String timeout(@PathVariable int interval) {
+//        state.setDelay(interval);
+//        return "I will sleep for " + state.getDelay() + "seconds on all requests!";
+//    }
 
 
 //    @RequestMapping("/result-set/{amount}")

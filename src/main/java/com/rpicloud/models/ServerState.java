@@ -1,6 +1,7 @@
 package com.rpicloud.models;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Created by mixmox on 01/03/16.
@@ -8,12 +9,24 @@ import java.io.IOException;
 public class ServerState {
 
     private String exception = null;
-    private int timeout = 0;
+    private int delay = 0;
+    private int amount = 10;
+
+
+    private ArrayList<Resource> resources;
+
+    public ServerState() {
+        resources = new ArrayList<>();
+        for (int i = 0; i < 50; i++) {
+            resources.add(new Resource("Dummy data from service 1"));
+        }
+    }
 
     public void invoke() throws Exception {
-        if(timeout != 0){
+        if(delay != 0){
             try {
-                Thread.sleep(timeout * 1000);
+                Thread.sleep(delay);
+
             }
             catch (InterruptedException e){
                 e.printStackTrace();
@@ -42,11 +55,27 @@ public class ServerState {
         this.exception = exception;
     }
 
-    public int getTimeout() {
-        return timeout;
+    public int getDelay() {
+        return delay;
     }
 
-    public void setTimeout(int timeout) {
-        this.timeout = timeout;
+    public void setDelay(int delay) {
+        this.delay = delay;
+    }
+
+    public ArrayList<Resource> getResources() {
+        return resources;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        if (amount > 50)
+            this.amount = 50;
+        else if(amount > 0)
+            this.amount = amount;
+
     }
 }
