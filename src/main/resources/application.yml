@@ -1,0 +1,16 @@
+configuration:
+  projectName: Service-1
+  service2:
+    host: service-2
+    port: 9002
+server:
+  port: 9001
+---
+spring:
+  profiles: development
+server:
+  port: 9001
+configuration:
+  service2:
+    host: localhost
+    port: 9002
