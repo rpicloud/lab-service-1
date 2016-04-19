@@ -51,7 +51,7 @@ public class ResourceController {
     }
 
     public ResponseEntity<List<Resource>> open(){
-        return new ResponseEntity<>(state.getResources().subList(0, state.getAmount()), HttpStatus.OK);
+        return new ResponseEntity<>(state.getResources().subList(0, state.getAmount()), HttpStatus.PARTIAL_CONTENT);
     }
 
     // Enable/disable circuit breaker
