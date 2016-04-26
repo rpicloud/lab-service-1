@@ -18,7 +18,7 @@ public class ServerState {
     public ServerState() {
         resources = new ArrayList<>();
         for (int i = 0; i < 50; i++) {
-            resources.add(new Resource("Dummy data from service 1"));
+            resources.add(new Resource("fallback1"));
         }
     }
 

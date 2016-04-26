@@ -34,8 +34,20 @@ public class ResourceController {
         service2host = env.getProperty("configuration.service2.host");
         service2port = env.getProperty("configuration.service2.port");
     }
-
     private ServerState state = new ServerState();
+
+
+    @RequestMapping(value = "/resources_nocb")
+    public ResponseEntity<List<Resource>> resources_nocb() {
+
+        IService2 service2 = Feign.builder()
+                .decoder(new JacksonDecoder())
+                .target(IService2.class, "http://"+service2host+":"+service2port);
+
+        List<Resource> resources = service2.resources();
+
+        return new ResponseEntity<List<Resource>>(resources, HttpStatus.OK);
+    }
 
     @HystrixCommand(fallbackMethod = "open", commandKey = "resources")
     @RequestMapping(value = "/resources")
